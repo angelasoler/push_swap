@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:03:30 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 19:55:16 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 20:36:03 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 // 	return (1);
 // }
 
-// int	operate_both(t_list *a, t_list *b, int *f(t_list *))
-// {
-// 	f(a);
-// 	f(b);
-// }
+int	operate_both(t_list **a, t_list **b, int f(t_list **))
+{
+	f(a);
+	f(b);
+	return (0);
+}
 
 int	swap(t_list **lst)
 {
@@ -53,14 +54,36 @@ int	push(t_list **lst, t_list **aux)
 	return (0);
 }
 
-// int	rotate(t_list *lst)
-// {
-	
-// }
+int	rotate(t_list **lst)
+{
+	t_list	*aux;
 
-// int	reverse_rotate(t_list *lst)
-// {
-// }
+	aux = *lst;
+	*lst = lst[0]->next;
+	aux->next = NULL;
+	ft_lstadd_back(lst, aux);
+	return (0);
+}
+
+int	reverse_rotate(t_list **lst)
+{
+	t_list	*aux;
+	int		size;
+
+	aux = ft_lstlast(*lst);
+	size = ft_lstsize(*lst) - 2;
+	aux->next = *lst;
+	*lst = aux;
+	lst[1]->next = NULL;
+	// while ()
+	// {
+		
+	// }
+	// *lst = lst[0]->next;
+	// aux->next = NULL;
+	// ft_lstadd_back(lst, aux);
+	return (0);
+}
 
 // sa (swap a): Swap the first 2 elements at the top of stack a.
 // Do nothing if there is only one or no elements.

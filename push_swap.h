@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:02:19 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 19:55:28 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 20:19:24 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ int		verify_arg_rules(char **argv, t_list **a);
 
 int		push(t_list **lst, t_list **aux);
 int		swap(t_list **lst);
+int		operate_both(t_list **a, t_list **b, int f(t_list **));
+int		rotate(t_list **lst);
+int		reverse_rotate(t_list **lst);
 
 #endif
