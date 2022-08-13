@@ -1,4 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
+/*   Updated: 2022/08/13 15:01:59 by asoler           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+void	print_list(t_list *list)
+{
+	t_list	*aux;
+
+	while(list)
+	{
+		aux = list;
+		list = list->next;
+		ft_printf("%d\n",aux->content);
+	}
+}
+
 void	free_list(t_list *list)
 {
 	t_list	*aux;
@@ -11,14 +36,14 @@ void	free_list(t_list *list)
 	}
 }
 
-void	alloc_to_list(char *s, t_list *list)
+void	alloc_to_list(char *s, t_list **list)
 {
-	int		n;
 	t_list	*new;
+	int		n;
 
 	n = ft_atoi(s);
-	new = ft_lstnew(&n);
-	ft_lstadd_back(&list, new);
+	new = ft_lstnew(n);
+	ft_lstadd_back(list, new);
 }
 
 int	verify_digits(char *n)
@@ -37,7 +62,10 @@ int	verify_digits(char *n)
 
 int	verify_arg_rules(char **argv, t_list **a)
 {
-	int	i;
+	int		i;
+	int		n;
+
+	t_list	*new;
 
 	i = 1;
 	while (argv[i])
@@ -45,10 +73,11 @@ int	verify_arg_rules(char **argv, t_list **a)
 		if (verify_digits(argv[i]))
 		{
 			free_list(*a);
-			*a = NULL;
 			return (1);
 		}
-		alloc_to_list(argv[i], *a);
+		n = ft_atoi(argv[i]);
+		new = ft_lstnew(n);
+		ft_lstadd_back(a, new);
 		i++;
 	}
 	return (0);
@@ -58,12 +87,14 @@ int	main(int argc, char *argv[])
 {
 	t_list *a;
 
+	a = NULL;
 	verify_arg_rules(argv, &a);
 	if (!a)
 	{
 		ft_printf("Error\n");
 		return(-1);
 	}
+	print_list(a);
 	// sort(stack.a);
 	return (argc);
 }

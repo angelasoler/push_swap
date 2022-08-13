@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:28:50 by asoler            #+#    #+#             */
-/*   Updated: 2022/04/23 01:05:49 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 14:51:36 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	aux1 = *lst;
 	while (aux1)
 	{
-		del(aux->content);
+		del(&aux->content);
 		aux1 = aux->next;
 		free(aux);
 		aux = aux1;

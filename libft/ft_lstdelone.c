@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:08:29 by asoler            #+#    #+#             */
-/*   Updated: 2022/04/22 18:17:42 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 14:51:47 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	del(lst->content);
+	del(&lst->content);
 	free(lst);
 }

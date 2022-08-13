@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:01:26 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/02 21:16:20 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 14:50:03 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 }	t_list;
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list	*ft_lstmap(t_list *lst, int *(*f)(int *), void (*del)(void *));
 
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
@@ -36,7 +36,7 @@ t_list	*ft_lstlast(t_list *lst);
 
 int		ft_lstsize(t_list *lst);
 
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(int content);
 
 void	ft_lstadd_front(t_list **lst, t_list *new);
 

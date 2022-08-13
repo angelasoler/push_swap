@@ -13,10 +13,10 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(WFLAGS) $(OBJ) -L ./ -lft -o $(NAME)
+	$(CC) $(WFLAGS) $(OBJ) -g3 -L ./ -lft -o $(NAME)
 
 %.o: %.c
-	$(CC) $(WFLAGS) -c $< -o $@
+	$(CC) $(WFLAGS) -g3 -c $< -o $@
 
 $(LIBFT):
 	make -C libft

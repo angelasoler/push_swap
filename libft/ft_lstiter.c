@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 21:06:12 by asoler            #+#    #+#             */
-/*   Updated: 2022/04/23 01:27:57 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 14:51:23 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	aux = lst;
 	while (aux)
 	{
-		f(aux->content);
+		f(&aux->content);
 		aux = aux->next;
 	}
 }
