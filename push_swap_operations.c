@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:03:30 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 20:36:03 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 22:02:54 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,14 @@ int	rotate(t_list **lst)
 
 int	reverse_rotate(t_list **lst)
 {
-	t_list	*aux;
 	int		size;
 
-	aux = ft_lstlast(*lst);
-	size = ft_lstsize(*lst) - 2;
-	aux->next = *lst;
-	*lst = aux;
-	lst[1]->next = NULL;
-	// while ()
-	// {
-		
-	// }
-	// *lst = lst[0]->next;
-	// aux->next = NULL;
-	// ft_lstadd_back(lst, aux);
+	size = ft_lstsize(*lst) - 1;
+	while (size > 0)
+	{
+		rotate(lst);
+		size--;
+	}
 	return (0);
 }
 
