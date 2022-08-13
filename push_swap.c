@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 15:01:59 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 15:09:01 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	verify_arg_rules(char **argv, t_list **a)
 		if (verify_digits(argv[i]))
 		{
 			free_list(*a);
+			*a = NULL;
 			return (1);
 		}
 		n = ft_atoi(argv[i]);
@@ -95,6 +96,7 @@ int	main(int argc, char *argv[])
 		return(-1);
 	}
 	print_list(a);
+	free_list(a);
 	// sort(stack.a);
 	return (argc);
 }
