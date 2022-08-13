@@ -7,7 +7,8 @@ WFLAGS = -Wall -Werror -Wextra
 LIBFT = libft.a
 
 SRC =	push_swap.c \
-		push_swap_utils.c
+		push_swap_utils.c \
+		push_swap_operation.c
 
 OBJ = $(SRC:.c=.o)
 

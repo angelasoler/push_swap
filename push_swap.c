@@ -6,11 +6,15 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 15:15:29 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 15:23:09 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+void	sort(t_list *a)
+{
+	print_operations;
+}
 
 int	main(int argc, char *argv[])
 {
