@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:03:30 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 17:43:30 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/13 19:55:16 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,28 @@
 // 	f(b);
 // }
 
-// int	swap(t_list *lst)
-// {
-// }
+int	swap(t_list **lst)
+{
+	t_list	*temp;
+	t_list	*aux;
+
+	if (!*lst)
+		return (1);
+	temp = *lst;
+	aux = lst[0]->next;
+	*lst = lst[0]->next->next;
+	ft_lstadd_front(lst, temp);
+	ft_lstadd_front(lst, aux);
+	return (0);
+}
 
 int	push(t_list **lst, t_list **aux)
 {
-	t_list *temp;
+	t_list	*temp;
 
-	temp = lst[0]->next;
 	if (!*lst)
 		return (1);
+	temp = lst[0]->next;
 	ft_lstadd_front(aux, *lst);
 	*lst = temp;
 	return (0);
