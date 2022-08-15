@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 22:11:28 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/15 16:08:40 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,22 @@ t_list	*sort(t_list **a)
 		ft_printf("pb\n");
 	if (!push(a, &b))
 		ft_printf("pb\n");
+	if (!swap(a))
+		ft_printf("sa\n");
+	else
+		ft_printf("wtf arg\n");
 	if (!operate_both(a, &b, swap))
 		ft_printf("ss\n");
+	else
+		ft_printf("wtf arg\n");
 	if (!operate_both(a, &b, rotate))
 		ft_printf("rr\n");
+	else
+		ft_printf("wtf arg\n");
 	if (!operate_both(a, &b, reverse_rotate))
 		ft_printf("rrr\n");
+	else
+		ft_printf("wtf arg\n");
 	return (b);
 }
 

@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:02:19 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 20:19:24 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/15 15:38:06 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct s_data
 {
 	t_list	*a;
 	t_list	*b;
+	t_list	*head;
+	t_list	*tail;
 }	t_data;
 
 void	print_list(t_list *list);

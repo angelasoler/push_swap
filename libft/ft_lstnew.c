@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 20:42:25 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 15:13:38 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/15 15:39:07 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_list	*ft_lstnew(int content)
 		return (0);
 	result->content = content;
 	result->next = NULL;
+	result->prev = NULL;
 	return (result);
 }
