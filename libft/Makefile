@@ -10,7 +10,6 @@ SRC =	ft_itoa.c \
 		ft_strlen.c \
 		ft_toupper.c \
 		ft_lstnew.c \
-		ft_lstmap.c \
 		ft_lstiter.c \
 		ft_lstlast.c \
 		ft_lstsize.c \

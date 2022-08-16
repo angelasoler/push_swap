@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:03:30 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/15 16:14:08 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/16 20:09:29 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,77 +19,79 @@ int	operate_both(t_list **a, t_list **b, int f(t_list **))
 	return (0);
 }
 
-int	swap(t_list **lst)
+int	swap(t_stack *stack)
 {
 	t_list	*temp;
 	t_list	*aux;
 	int		size;
 
-	size = ft_lstsize(*lst);
+	size = ft_lstsize(stack->lst);
 	if (size < 2)
-	{
-		ft_printf("wtf arg -> cannot do that\n");
 		return (1);
-	}
-	temp = *lst;
-	aux = lst[0]->next;
-	*lst = aux->next;
-	ft_lstadd_front(lst, temp);
-	ft_lstadd_front(lst, aux);
+	temp = stack->lst;
+	aux = stack->lst->next;
+	stack->lst = aux->next;
+	ft_lstadd_front(&stack->lst, temp);
+	ft_lstadd_front(&stack->lst, aux);
 	return (0);
 }
 
-int	push(t_list **lst, t_list **aux)
+int	push(t_stack *from, t_stack *to)
 {
 	t_list	*temp;
 	int		size;
 
-	size = ft_lstsize(*lst);
+	size = ft_lstsize(from->lst);
 	if (size < 1)
-	{
-		ft_printf("wtf arg -> cannot do that\n");
 		return (1);
+	else if (size == 1)
+	{
+		temp = from->lst->next;
+		ft_lstadd_front(&to->lst, from->lst);
+		// temp->prev = NULL;
+		from->lst = temp;
+		ft_printf("p%c\n", to->type);
 	}
-	temp = lst[0]->next;
-	ft_lstadd_front(aux, *lst);
-	temp->prev = NULL;
-	*lst = temp;
+	else
+	{
+		temp = from->lst->next;
+		ft_lstadd_front(&to->lst, from->lst);
+		temp->prev = NULL;
+		from->lst = temp;
+		ft_printf("p%c\n", to->type);
+	}
 	return (0);
 }
 
-int	rotate(t_list **lst)
+int	rotate(t_stack *stack)
 {
 	t_list	*aux;
 	int		size;
 
-	size = ft_lstsize(*lst);
+	size = ft_lstsize(stack->lst);
 	if (size <= 1)
-	{
-		ft_printf("wtf arg -> cannot do that\n");
 		return (1);
-	}
-	aux = *lst;
-	*lst = lst[0]->next;
-	lst[0]->prev = NULL;
+	aux = stack->lst;
+	stack->lst = stack->lst->next;
+	stack->lst->prev = NULL;
 	aux->next = NULL;
-	ft_lstadd_back(lst, aux);
+	ft_lstadd_back(&stack->lst, aux);
+	ft_printf("r%c\n", stack->type);
 	return (0);
 }
 
-int	reverse_rotate(t_list **lst)
+int	reverse_rotate(t_stack *stack)
 {
 	t_list	*last;
 	int		size;
 
-	size = ft_lstsize(*lst);
+	size = ft_lstsize(stack->lst);
 	if (size <= 1)
-	{
-		ft_printf("wtf arg -> cannot do that\n");
 		return (1);
-	}
-	last = ft_lstlast(*lst);
+	last = ft_lstlast(stack->lst);
 	last->prev->next = NULL;
 	last->prev = NULL;
-	ft_lstadd_front(lst, last);
+	ft_lstadd_front(&stack->lst, last);
+	ft_printf("rr%c\n", stack->type);
 	return (0);
 }

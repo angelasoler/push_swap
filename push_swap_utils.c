@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:11:47 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/13 17:39:05 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/16 18:13:41 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,6 @@ void	free_list(t_list *list)
 		list = list->next;
 		free(aux);
 	}
-}
-
-void	alloc_to_list(char *s, t_list **list)
-{
-	t_list	*new;
-	int		n;
-
-	n = ft_atoi(s);
-	new = ft_lstnew(n);
-	ft_lstadd_back(list, new);
 }
 
 int	verify_digits(char *n)
@@ -76,7 +66,7 @@ int	verify_arg_rules(char **argv, t_list **a)
 			return (1);
 		}
 		n = ft_atoi(argv[i]);
-		new = ft_lstnew(n);
+		new = ft_lstnew(n, i);
 		ft_lstadd_back(a, new);
 		i++;
 	}
