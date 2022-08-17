@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/16 19:59:35 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/17 15:28:49 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ t_stack	sort(t_stack *a, int list_size)
 	b.lst = NULL;
 	smaller = find_smaller_and_bigger(a->lst, &bigger);
 	mean = (bigger->content - smaller->content) / 2;
+	// reverse_rotate(a);
+	// ft_printf("%d\n", list_size);
 	while (bigger->index >= (list_size / 2) && list_size >= mean)
 	{
 		while (a->lst->content != bigger->content)
@@ -76,6 +78,7 @@ int	main(int argc, char *argv[])
 	t_stack	b;
 
 	a.type = 'a';
+	a.lst = NULL;
 	verify_arg_rules(argv, &a.lst);
 	if (!a.lst)
 	{
