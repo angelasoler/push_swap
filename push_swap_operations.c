@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:03:30 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/17 15:31:15 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/17 15:34:01 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,6 @@ int	reverse_rotate(t_stack *stack)
 	int		size;
 
 	size = ft_lstsize(stack->lst);
-	ft_printf("%d\n\n", size);
-	print_list(stack->lst);
-	ft_printf("%d\n\n", size);
-	ft_printf("type= %c\n\n", stack->type);
 	if (size < 3)
 		return (1);
 	last = ft_lstlast(stack->lst);

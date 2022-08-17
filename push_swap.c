@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/17 15:28:49 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/17 16:05:11 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,42 @@ t_stack	sort(t_stack *a, int list_size)
 	t_stack	b;
 	t_list	*smaller;
 	t_list	*bigger;
+	t_list	*last;
 	int		mean;
 
 	b.type = 'b';
 	b.lst = NULL;
+	last = ft_lstlast(a->lst);
 	smaller = find_smaller_and_bigger(a->lst, &bigger);
-	mean = (bigger->content - smaller->content) / 2;
-	// reverse_rotate(a);
-	// ft_printf("%d\n", list_size);
-	while (bigger->index >= (list_size / 2) && list_size >= mean)
+	mean = list_size / 2;
+	if (last->content != bigger->content)
 	{
-		while (a->lst->content != bigger->content)
-		{
+		if (a->lst->content == bigger->content)
+			rotate(a);
+		else
 			reverse_rotate(a);
-		}
-		push(a, &b);
-		find_smaller_and_bigger(a->lst, &bigger);
-		list_size = ft_lstsize(a->lst);
 	}
-	if (list_size == 2)
-	{
+	if (a->lst->content > a->lst->next->content)
 		swap(a);
-		while (!push(&b, a));
-	}
-	ft_printf("big= %d[%d]\nsmall=%d[%d]\naverage = %d\n", bigger->content, bigger->index, smaller->content, smaller->index, mean);
-	ft_printf("size list = %d\n", list_size);
+	// // reverse_rotate(a);
+	// // ft_printf("%d\n", list_size);
+	// while (bigger->index >= (list_size / 2) && list_size >= mean)
+	// {
+	// 	while (a->lst->content != bigger->content)
+	// 	{
+	// 		reverse_rotate(a);
+	// 	}
+	// 	push(a, &b);
+	// 	find_smaller_and_bigger(a->lst, &bigger);
+	// 	list_size = ft_lstsize(a->lst);
+	// }
+	// if (list_size == 2)
+	// {
+	// 	swap(a);
+	// 	while (!push(&b, a));
+	// }
+	// ft_printf("big= %d[%d]\nsmall=%d[%d]\naverage = %d\n", bigger->content, bigger->index, smaller->content, smaller->index, mean);
+	// ft_printf("size list = %d\n", list_size);
 	return (b);
 }
 
