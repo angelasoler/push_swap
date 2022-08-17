@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/16 19:59:35 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/17 14:42:42 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list *find_smaller_and_bigger(t_list *a, t_list **bigger)
 
 	*bigger = a; 
 	small = a; 
-	a = a->next;
+	// a = a->next;
 	index = 1;
 	while (a)
 	{
@@ -49,24 +49,55 @@ t_stack	sort(t_stack *a, int list_size)
 	b.type = 'b';
 	b.lst = NULL;
 	smaller = find_smaller_and_bigger(a->lst, &bigger);
-	mean = (bigger->content - smaller->content) / 2;
-	while (bigger->index >= (list_size / 2) && list_size >= mean)
-	{
-		while (a->lst->content != bigger->content)
-		{
-			reverse_rotate(a);
-		}
-		push(a, &b);
-		find_smaller_and_bigger(a->lst, &bigger);
-		list_size = ft_lstsize(a->lst);
-	}
-	if (list_size == 2)
-	{
-		swap(a);
-		while (!push(&b, a));
-	}
-	ft_printf("big= %d[%d]\nsmall=%d[%d]\naverage = %d\n", bigger->content, bigger->index, smaller->content, smaller->index, mean);
-	ft_printf("size list = %d\n", list_size);
+	mean = list_size / 2;
+	swap(a);
+	// reverse_rotate(a);
+	// // swap(a);
+	// reverse_rotate(a);
+	// // swap(a);
+	// // ft_printf("a inside sort:\n");
+	// // print_list(a->lst);
+	// reverse_rotate(a);
+	// swap(a);
+	// push(a, &b);
+	// push(a, &b);
+	// push(a, &b);
+	// push(a, &b);
+	// while (list_size >= mean)
+	// {
+	// 	if (smaller->index <= (list_size / 2))
+	// 	{
+	// 		while (a->lst->content != smaller->content)
+	// 		{
+	// 			if (a->lst->content > a->lst->next->content)
+	// 				swap(a);
+	// 			reverse_rotate(a);
+	// 		}
+	// 		push(a, &b);
+	// 	}
+	// 	smaller = find_smaller_and_bigger(a->lst, &bigger);
+	// 	list_size = ft_lstsize(a->lst);
+	// 	if (list_size == 2)
+	// 	{
+	// 		if (a->lst->content > a->lst->next->content)
+	// 			swap(a);
+	// 	}
+	// 	// else
+	// 	// {
+	// 	// 	while (a->lst->content != smaller->content)
+	// 	// 	{
+	// 	// 		rotate(a);
+	// 	// 	}
+	// 	// 	push(a, &b);
+	// 	// 	if (a->lst->content > a->lst->next->content)
+	// 	// 		swap(a);
+	// 	// 	smaller = find_smaller_and_bigger(a->lst, &bigger);
+	// 	// 	list_size = ft_lstsize(a->lst);
+	// 	// }
+	// }
+	// sort_a(a);
+	// ft_printf("big= %d[%d]\nsmall=%d[%d]\naverage = %d\n", bigger->content, bigger->index, smaller->content, smaller->index, mean);
+	// ft_printf("size list = %d\n", list_size);
 	return (b);
 }
 
@@ -76,6 +107,7 @@ int	main(int argc, char *argv[])
 	t_stack	b;
 
 	a.type = 'a';
+	a.lst = NULL;
 	verify_arg_rules(argv, &a.lst);
 	if (!a.lst)
 	{

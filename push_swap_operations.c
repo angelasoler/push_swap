@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:03:30 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/16 20:09:29 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/17 14:44:40 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	swap(t_stack *stack)
 	stack->lst = aux->next;
 	ft_lstadd_front(&stack->lst, temp);
 	ft_lstadd_front(&stack->lst, aux);
+	ft_printf("s%c\n", stack->type);
 	return (0);
 }
 
@@ -69,7 +70,7 @@ int	rotate(t_stack *stack)
 	int		size;
 
 	size = ft_lstsize(stack->lst);
-	if (size <= 1)
+	if (size < 3)
 		return (1);
 	aux = stack->lst;
 	stack->lst = stack->lst->next;
@@ -86,11 +87,13 @@ int	reverse_rotate(t_stack *stack)
 	int		size;
 
 	size = ft_lstsize(stack->lst);
-	if (size <= 1)
+	if (size < 3)
 		return (1);
 	last = ft_lstlast(stack->lst);
 	last->prev->next = NULL;
 	last->prev = NULL;
+	// ft_printf("a inside op:\n");
+	// print_list(stack->lst);
 	ft_lstadd_front(&stack->lst, last);
 	ft_printf("rr%c\n", stack->type);
 	return (0);

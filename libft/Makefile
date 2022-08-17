@@ -2,7 +2,7 @@ NAME = ../libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 
 SRC =	ft_itoa.c \
 		ft_atoi.c \
