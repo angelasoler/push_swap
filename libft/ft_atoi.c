@@ -6,15 +6,15 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 18:52:29 by asoler            #+#    #+#             */
-/*   Updated: 2022/05/24 14:25:43 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/18 16:29:20 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static int	power(const char n, int len)
+static long int	power(const char n, int len)
 {
-	int	number;
+	long int	number;
 
 	number = n - 48;
 	if (len == 0)
@@ -27,9 +27,9 @@ static int	power(const char n, int len)
 	return (number);
 }
 
-static int	ft_result(const char *n, int len)
+static long int	ft_result(const char *n, int len)
 {
-	int	result;
+	long int	result;
 
 	result = 0;
 	while (len > 0)
@@ -41,7 +41,7 @@ static int	ft_result(const char *n, int len)
 	return (result);
 }
 
-int	ft_atoi(const char *nptr)
+long int	ft_atoi(const char *nptr)
 {
 	int			i;
 	long int	result;
@@ -63,5 +63,5 @@ int	ft_atoi(const char *nptr)
 	result = ft_result(nptr, i);
 	if (b)
 		result *= -1;
-	return ((int)result);
+	return (result);
 }

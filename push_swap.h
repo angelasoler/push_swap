@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:02:19 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/16 19:26:40 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/18 16:19:47 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 # include "includes/libft.h"
 # define PUSH_SWAP_H
 # define MAX_INT 2147483647
-# define MIT_INT -2147483648
+# define MIN_INT -2147483648
 
 typedef struct s_stack
 {
 	t_list	*lst;
 	char	type;
-	int		size;
+	long int		size;
+	long int		*arr;
+	long int		*sort_list;
+	long int		rrr;
 }	t_stack;
 
 typedef struct s_data
@@ -33,7 +36,8 @@ void	print_list(t_list *list);
 void	free_list(t_list *list);
 void	alloc_to_list(char *s, t_list **list);
 int		verify_digits(char *n);
-int		verify_arg_rules(char **argv, t_list **a);
+int		verify_arg_rules(char **argv, t_stack *a);
+void	normalize(t_stack *a);
 
 int		push(t_stack *from, t_stack *to);
 int		swap(t_stack *stack);

@@ -6,6 +6,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 SRC =	ft_itoa.c \
 		ft_atoi.c \
+		ft_calloc.c \
 		ft_printf.c \
 		ft_strlen.c \
 		ft_toupper.c \
