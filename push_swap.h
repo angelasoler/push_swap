@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:02:19 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/19 15:35:30 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 17:05:52 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 typedef struct s_stack
 {
-	t_list	*lst;
-	char	type;
-	long int		size;
-	long int		*arr;
-	long int		*sort_list;
-	long int		rrr;
+	t_list		*lst;
+	char		type;
+	long int	size;
+	long int	*arr;
+	long int	*sort_list;
+	long int	rrr;
 }	t_stack;
 
 typedef struct s_data

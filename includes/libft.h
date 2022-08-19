@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:01:26 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/18 16:32:04 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 16:48:27 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 typedef struct s_list
 {
-	long int				content;
-	long int				index;
+	long int		content;
+	long int		index;
 	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;

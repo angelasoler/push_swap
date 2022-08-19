@@ -8,7 +8,8 @@ LIBFT = libft.a
 
 SRC =	push_swap.c \
 		push_swap_utils.c \
-		push_swap_operations.c
+		push_swap_operations.c \
+		push_swap_stack_alloc.c
 
 OBJ = $(SRC:.c=.o)
 

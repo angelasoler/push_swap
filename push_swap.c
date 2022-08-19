@@ -6,41 +6,31 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/19 16:37:32 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 17:18:53 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list *find_smaller_and_bigger(t_list *a, char type)
+t_list	*find_smaller_and_bigger(t_list *a, char type)
 {
-	t_list	*small;
-	t_list	*big;
+	t_list	*lst;
 	int		index;
 
-	big = a; 
-	small = a; 
+	lst = a;
 	a = a->next;
 	index = 1;
 	while (a)
 	{
-		if (a->content > big->content)
-		{
-			big =  a;
-			big->index = index;
-		}
-		if (a->content < small->content)
-		{
-			small = a;
-			small->index = index;
-		}
+		if (a->content > big->content && type == 'b')
+			lst = a;
+		if (a->content < small->content && type == 'a')
+			lst = a;
+		lst->index = index;
 		index++;
 		a = a->next;
 	}
-	if (type == 'b')
-		return (big);
-	else
-		return (small);
+	return (lst);
 }
 
 void	sort_3(t_stack *a)
@@ -73,24 +63,27 @@ t_stack	sort(t_stack *a)
 	b.type = 'b';
 	if (a->size <= 3)
 		sort_3(a);
-	swap(a);
-	reverse_rotate(a);
-	swap(a);
-	reverse_rotate(a);
-	swap(a);
-	reverse_rotate(a);
-	rotate(a);
-	push(a, &b);
-	push(&b, a);
-	push(a, &b);
-	push(a, &b);
-	push(a, &b);
-	push(a, &b);
-	push(a, &b);
-	push(a, &b);
-	swap(&b);
-	reverse_rotate(&b);
-	rotate(&b);
+	else
+	{
+		swap(a);
+		reverse_rotate(a);
+		swap(a);
+		reverse_rotate(a);
+		swap(a);
+		reverse_rotate(a);
+		rotate(a);
+		push(a, &b);
+		push(&b, a);
+		push(a, &b);
+		push(a, &b);
+		push(a, &b);
+		push(a, &b);
+		push(a, &b);
+		push(a, &b);
+		swap(&b);
+		reverse_rotate(&b);
+		rotate(&b);
+	}
 	return (b);
 }
 
@@ -100,8 +93,10 @@ int	main(int argc, char *argv[])
 	t_stack	b;
 
 	a.type = 'a';
+	a.size = argc - 1;
 	a.lst = NULL;
 	a.rrr = 0;
+	b.rrr = 0;
 	verify_arg_rules(argv, &a);
 	if (!a.lst)
 	{
@@ -110,7 +105,6 @@ int	main(int argc, char *argv[])
 	}
 	normalize(&a);
 	b = sort(&a);
-	b.rrr = 0;
 	ft_printf("a:\n");
 	print_list(a.lst);
 	ft_printf("a print reverse:\n");
@@ -120,6 +114,8 @@ int	main(int argc, char *argv[])
 		ft_printf("   ---after sort ---\n\n");
 		ft_printf("b:\n");
 		print_list(b.lst);
+		ft_printf("b print reverse:\n");
+		print_list_in_reverse(b.lst);
 	}
 	free_list(a.lst);
 	free_list(b.lst);
