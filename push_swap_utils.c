@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:11:47 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/18 17:35:58 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 15:48:35 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,22 @@
 
 void	print_list(t_list *list)
 {
-	t_list	*aux;
-
 	while (list)
 	{
-		aux = list;
+		ft_printf("%d\n", list->content);
 		list = list->next;
-		ft_printf("%d\n", aux->content);
+	}
+}
+
+void	print_list_in_reverse(t_list *list)
+{
+	t_list	*tail;
+
+	tail = ft_lstlast(list);
+	while (tail)
+	{
+		ft_printf("%d\n", tail->content);
+		tail = tail->prev;
 	}
 }
 
@@ -78,43 +87,27 @@ void	sort_array(long int *arr)
 
 void	normalize(t_stack *a)
 {
-	t_list		*aux;
+	t_list		*head;
 	long int	i;
-	long int	count;
 
-	count = 0;
-	aux = a->lst;
+	i = 1;
 	sort_array(&a->arr[1]);
-	i = 0;
-	while (a->arr[i])
+	while (i <= a->size)
 	{
-		ft_printf("n = %d\n", a->arr[i]);
+		head = a->lst;
+		while (head->content != a->arr[i])
+			head = head->next;
+		head->content = i - 1;
 		i++;
 	}
-	i = 1;
-	while (count <= a->size)
-	{
-		ft_printf("loo\n\n = %d\n", a->arr[i]);
-		ft_printf("lista\n\n = %d\n", aux->content);
-		ft_printf("loo\n\n = %p\n", a->arr[i]);
-		ft_printf("lista\n\n = %p\n", aux->content);
-		while (aux->content != a->arr[i])
-		{
-			aux = aux->next;
-			i++;
-		}
-		aux->content = i - 1;
-		i = 1;
-		count++;
-		aux = a->lst;
-	}
+	free(a->arr);
 }
 
 int	verify_arg_rules(char **argv, t_stack *a)
 {
 	long int		i;
 	long int		n;
-	t_list	*new;
+	t_list		*new;
 
 	i = 1;
 	n = 0;

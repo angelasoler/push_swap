@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/18 16:06:32 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 16:37:32 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ void	sort_3(t_stack *a)
 	if (last->content != bigger->content && a->size == 3)
 	{
 		if (a->lst->content == bigger->content)
-		{
 			rotate(a);
-		}
 		else
 			reverse_rotate(a);
 	}
@@ -75,6 +73,24 @@ t_stack	sort(t_stack *a)
 	b.type = 'b';
 	if (a->size <= 3)
 		sort_3(a);
+	swap(a);
+	reverse_rotate(a);
+	swap(a);
+	reverse_rotate(a);
+	swap(a);
+	reverse_rotate(a);
+	rotate(a);
+	push(a, &b);
+	push(&b, a);
+	push(a, &b);
+	push(a, &b);
+	push(a, &b);
+	push(a, &b);
+	push(a, &b);
+	push(a, &b);
+	swap(&b);
+	reverse_rotate(&b);
+	rotate(&b);
 	return (b);
 }
 
@@ -97,6 +113,8 @@ int	main(int argc, char *argv[])
 	b.rrr = 0;
 	ft_printf("a:\n");
 	print_list(a.lst);
+	ft_printf("a print reverse:\n");
+	print_list_in_reverse(a.lst);
 	if (b.lst)
 	{
 		ft_printf("   ---after sort ---\n\n");

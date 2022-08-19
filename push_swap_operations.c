@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:03:30 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/17 20:05:58 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 16:36:18 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,22 @@ int	swap(t_stack *stack)
 
 int	push(t_stack *from, t_stack *to)
 {
-	t_list	*temp;
+	t_list	*head;
 	int		size;
 
+	head = from->lst;
 	size = ft_lstsize(from->lst);
 	if (size < 1)
 		return (1);
-	else if (size == 1)
+	if (size != 1)
 	{
-		temp = from->lst->next;
-		ft_lstadd_front(&to->lst, from->lst);
-		// temp->prev = NULL;
-		from->lst = temp;
-		ft_printf("p%c\n", to->type);
+		from->lst = from->lst->next;
+		from->lst->prev = NULL;
 	}
-	else
-	{
-		temp = from->lst->next;
-		ft_lstadd_front(&to->lst, from->lst);
-		temp->prev = NULL;
-		from->lst = temp;
-		ft_printf("p%c\n", to->type);
-	}
+	ft_lstadd_front(&to->lst, head);
+	if (size == 1)
+		from->lst = NULL;
+	ft_printf("p%c\n", to->type);
 	return (0);
 }
 
@@ -84,15 +78,17 @@ int	rotate(t_stack *stack)
 
 int	reverse_rotate(t_stack *stack)
 {
+	t_list	*last;
 	int		size;
 
-	size = ft_lstsize(stack->lst) - 1;
+	size = ft_lstsize(stack->lst);
+	if (size < 3)
+		return (1);
 	stack->rrr = 1;
-	while (size > 0)
-	{
-		rotate(stack);
-		size--;
-	}
+	last = ft_lstlast(stack->lst);
+	last->prev->next = NULL;
+	last->prev = NULL;
+	ft_lstadd_front(&stack->lst, last);
 	stack->rrr = 0;
 	ft_printf("rr%c\n", stack->type);
 	return (0);

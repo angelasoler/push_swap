@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:02:19 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/18 16:19:47 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 15:35:30 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_data
 	t_list	*tail;
 }	t_data;
 
+void	print_list_in_reverse(t_list *list);
 void	print_list(t_list *list);
 void	free_list(t_list *list);
 void	alloc_to_list(char *s, t_list **list);
