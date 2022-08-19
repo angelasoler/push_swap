@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 16:55:39 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/19 16:59:45 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 21:21:06 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,17 @@ void	normalize(t_stack *a)
 	free(a->arr);
 }
 
+int	verify_dup_num(t_list *lst, long int n)
+{
+	while (lst)
+	{
+		if (lst->content == n)
+			return (1);
+		lst = lst->next;
+	}
+	return (0);
+}
+
 int	verify_arg_rules(char **argv, t_stack *a)
 {
 	long int	i;
@@ -78,20 +89,21 @@ int	verify_arg_rules(char **argv, t_stack *a)
 
 	n = 0;
 	i = 1;
-	a->arr = calloc((a->size + 2), sizeof(long int));
-	a->arr[0] = 1;
 	while (argv[i])
 	{
-		if (verify_digits(argv[i]) || n < MIN_INT || n > MAX_INT)
+		n = ft_atoi(argv[i]);
+		a->arr[i] = n;
+		a->dup = verify_dup_num(a->lst, n);
+		new = ft_lstnew(n, i);
+		ft_lstadd_back(&a->lst, new);
+		if (verify_digits(argv[i]) || a->dup \
+		|| n < MIN_INT || n > MAX_INT)
 		{
 			free_list(a->lst);
+			free(a->arr);
 			a->lst = NULL;
 			return (1);
 		}
-		n = ft_atoi(argv[i]);
-		a->arr[i] = n;
-		new = ft_lstnew(n, i);
-		ft_lstadd_back(&a->lst, new);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/19 17:18:53 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/19 21:21:38 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_list	*find_smaller_and_bigger(t_list *a, char type)
 	index = 1;
 	while (a)
 	{
-		if (a->content > big->content && type == 'b')
+		if (a->content > lst->content && type == 'b')
 			lst = a;
-		if (a->content < small->content && type == 'a')
+		if (a->content < lst->content && type == 'a')
 			lst = a;
 		lst->index = index;
 		index++;
@@ -97,6 +97,9 @@ int	main(int argc, char *argv[])
 	a.lst = NULL;
 	a.rrr = 0;
 	b.rrr = 0;
+	a.dup = 0;
+	a.arr = calloc((a.size + 2), sizeof(long int));
+	a.arr[0] = 1;
 	verify_arg_rules(argv, &a);
 	if (!a.lst)
 	{
