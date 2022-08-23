@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/19 21:21:38 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/23 14:18:06 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void	sort_3(t_stack *a)
 		swap(a);
 }
 
+void	sort_n(t_stack *a, t_stack *b);
+{
+	
+}
+
 t_stack	sort(t_stack *a)
 {
 	t_stack	b;
@@ -64,26 +69,7 @@ t_stack	sort(t_stack *a)
 	if (a->size <= 3)
 		sort_3(a);
 	else
-	{
-		swap(a);
-		reverse_rotate(a);
-		swap(a);
-		reverse_rotate(a);
-		swap(a);
-		reverse_rotate(a);
-		rotate(a);
-		push(a, &b);
-		push(&b, a);
-		push(a, &b);
-		push(a, &b);
-		push(a, &b);
-		push(a, &b);
-		push(a, &b);
-		push(a, &b);
-		swap(&b);
-		reverse_rotate(&b);
-		rotate(&b);
-	}
+		sort_n(a, &b);
 	return (b);
 }
 

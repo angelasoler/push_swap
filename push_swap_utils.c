@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:11:47 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/19 16:56:15 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/23 14:27:08 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,16 @@ void	free_list(t_list *list)
 		list = list->next;
 		free(aux);
 	}
+}
+
+int	is_sorted(t_list *list)
+{
+	
+	while (list->next)
+	{
+		if (list->content != (list->next->content - 1))
+			return (0);
+		list = list->next;
+	}
+	return (1);
 }
