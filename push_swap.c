@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/23 14:18:06 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/24 16:41:14 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_list	*find_smaller_and_bigger(t_list *a, char type)
 			lst = a;
 		if (a->content < lst->content && type == 'a')
 			lst = a;
-		lst->index = index;
 		index++;
 		a = a->next;
 	}
@@ -44,20 +43,40 @@ void	sort_3(t_stack *a)
 	last = ft_lstlast(a->lst);
 	bigger = find_smaller_and_bigger(a->lst, 'b');
 	mean = a->size / 2;
-	if (last->content != bigger->content && a->size == 3)
+	if (last->content != bigger->content && ft_lstsize(a->lst) == 3)
 	{
-		if (a->lst->content == bigger->content)
-			rotate(a);
-		else
+		if (a->lst->content != bigger->content)
 			reverse_rotate(a);
+		else
+			rotate(a);
 	}
 	if (a->lst->content > a->lst->next->content)
 		swap(a);
 }
 
-void	sort_n(t_stack *a, t_stack *b);
+void	sort_n(t_stack *a, t_stack *b)
 {
-	
+	long int middle;
+
+	middle = a->size / 2;
+	while (ft_lstsize(a->lst) > 3 || ft_lstsize(a->lst) > middle)
+	{
+		if (a->lst->content >= middle && a->size <= 6)
+			rotate(a);
+		else if (a->lst->content > middle && a->size > 6)
+			rotate(a);
+		else
+			push(a, b);
+	}
+	if (ft_lstsize(a->lst) == 3)
+		sort_3(a);
+	while (ft_lstsize(b->lst))
+	{
+		if (b->lst->content != (a->lst->content - 1))
+			rotate(b);
+		else
+			push(b, a);
+	}
 }
 
 t_stack	sort(t_stack *a)
@@ -66,6 +85,8 @@ t_stack	sort(t_stack *a)
 
 	b.lst = NULL;
 	b.type = 'b';
+	if (is_sorted(a->lst))
+		return (b);
 	if (a->size <= 3)
 		sort_3(a);
 	else
@@ -96,15 +117,15 @@ int	main(int argc, char *argv[])
 	b = sort(&a);
 	ft_printf("a:\n");
 	print_list(a.lst);
-	ft_printf("a print reverse:\n");
-	print_list_in_reverse(a.lst);
+	// ft_printf("a print reverse:\n");
+	// print_list_in_reverse(a.lst);
 	if (b.lst)
 	{
 		ft_printf("   ---after sort ---\n\n");
 		ft_printf("b:\n");
 		print_list(b.lst);
-		ft_printf("b print reverse:\n");
-		print_list_in_reverse(b.lst);
+		// ft_printf("b print reverse:\n");
+		// print_list_in_reverse(b.lst);
 	}
 	free_list(a.lst);
 	free_list(b.lst);

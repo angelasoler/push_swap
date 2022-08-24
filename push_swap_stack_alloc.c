@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 16:55:39 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/19 21:21:06 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/24 16:18:48 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	verify_arg_rules(char **argv, t_stack *a)
 		n = ft_atoi(argv[i]);
 		a->arr[i] = n;
 		a->dup = verify_dup_num(a->lst, n);
-		new = ft_lstnew(n, i);
+		new = ft_lstnew(n);
 		ft_lstadd_back(&a->lst, new);
 		if (verify_digits(argv[i]) || a->dup \
 		|| n < MIN_INT || n > MAX_INT)

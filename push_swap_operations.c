@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 16:03:30 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/19 16:36:18 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/24 16:25:06 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,19 @@ int	push(t_stack *from, t_stack *to)
 int	rotate(t_stack *stack)
 {
 	t_list	*aux;
+	t_list	*aux1;
 	int		size;
 
 	size = ft_lstsize(stack->lst);
 	if (size < 3)
 		return (1);
 	aux = stack->lst;
+	aux1 = ft_lstnew(stack->lst->content);
 	stack->lst = stack->lst->next;
 	stack->lst->prev = NULL;
 	aux->next = NULL;
-	ft_lstadd_back(&stack->lst, aux);
+	free(aux);
+	ft_lstadd_back(&stack->lst, aux1);
 	if (!stack->rrr)
 		ft_printf("r%c\n", stack->type);
 	return (0);
