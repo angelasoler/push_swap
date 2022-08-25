@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/24 16:41:14 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/25 07:20:47 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,70 @@ void	sort_3(t_stack *a)
 
 void	sort_n(t_stack *a, t_stack *b)
 {
-	long int middle;
+	long	middle;
+	long	i;
 
 	middle = a->size / 2;
-	while (ft_lstsize(a->lst) > 3 || ft_lstsize(a->lst) > middle)
+	b->lst = ft_lstnew(257);
+	i = 0;
+	while (!is_sorted(a->lst))
 	{
-		if (a->lst->content >= middle && a->size <= 6)
-			rotate(a);
-		else if (a->lst->content > middle && a->size > 6)
-			rotate(a);
+		if (i < (a->size * 2))
+		{
+			if (a->lst->content > a->lst->next->content)
+				swap(a);
+			else
+				reverse_rotate(a);
+			i++;
+		}
 		else
-			push(a, b);
+		{
+			if (a->lst->content > a->lst->next->content)
+				swap(a);
+			else
+				rotate(a);
+		}
+		// if (almost_sorte())
+		// {
+		// 	while (!is_sorted())
+		// 		rotate(a);
+		// }
 	}
-	if (ft_lstsize(a->lst) == 3)
-		sort_3(a);
-	while (ft_lstsize(b->lst))
-	{
-		if (b->lst->content != (a->lst->content - 1))
-			rotate(b);
-		else
-			push(b, a);
-	}
+	// while (ft_lstsize(a->lst) > 3)
+	// {
+	// 	if (a->lst->content >= middle && a->size <= 6)
+	// 		rotate(a);
+	// 	else if (a->lst->content > middle && a->size > 6)
+	// 		rotate(a);
+	// 	else
+	// 		push(a, b);
+	// }
+	// if (ft_lstsize(a->lst) <= 3)
+	// 	sort_3(a);
+	// else
+	// {
+	// 	while (!is_sorted(a->lst))
+	// 	{
+	// 		if (a->lst->content > a->lst->next->content)
+	// 			swap(a);
+	// 		else
+	// 			reverse_rotate(a);
+	// 	}
+	// }
+	// while (ft_lstsize(b->lst))
+	// {
+	// 	if (b->lst->content != (a->lst->content - 1))
+	// 	{
+	// 		if (ft_lstsize(b->lst) < 3)
+	// 			swap(b);
+	// 		else
+	// 			rotate(b);
+	// 	}
+	// 	else
+	// 	{
+	// 		push(b, a);
+	// 	}
+	// }
 }
 
 t_stack	sort(t_stack *a)
@@ -114,11 +157,13 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	normalize(&a);
+	ft_printf("before sort a:\n");
+	print_list(a.lst);
 	b = sort(&a);
 	ft_printf("a:\n");
 	print_list(a.lst);
-	// ft_printf("a print reverse:\n");
-	// print_list_in_reverse(a.lst);
+	ft_printf("a print reverse:\n");
+	print_list_in_reverse(a.lst);
 	if (b.lst)
 	{
 		ft_printf("   ---after sort ---\n\n");

@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 16:55:39 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/24 16:18:48 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/25 05:58:19 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ int	verify_digits(char *n)
 	return (0);
 }
 
-void	sort_array(long int *arr)
+void	sort_array(long int *arr, long size)
 {
 	int			sorted;
 	long int	aux;
-	int			i;
+	long		i;
 
 	sorted = 0;
 	i = 0;
 	while (!sorted)
 	{
 		sorted = 1;
-		while (arr[i + 1])
+		while (i < (size - 1))
 		{
 			if (arr[i] > arr[i + 1])
 			{
@@ -58,7 +58,7 @@ void	normalize(t_stack *a)
 	long int	i;
 
 	i = 1;
-	sort_array(&a->arr[1]);
+	sort_array(&a->arr[1], a->size);
 	while (i <= a->size)
 	{
 		head = a->lst;
