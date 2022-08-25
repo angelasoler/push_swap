@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:11:47 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/23 14:27:08 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/25 16:12:12 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,22 @@ int	is_sorted(t_list *list)
 		list = list->next;
 	}
 	return (1);
+}
+
+long	almost_sorted(t_list *list)
+{
+	long	result;
+
+	result = -1;
+	list = list->next;
+	while (list->next)
+	{
+		if (list->content != (list->next->content - 1) && list->content != (list->prev->content + 1))
+		{
+			result = list->content;
+			break;
+		}
+		list = list->next;
+	}
+	return (result);
 }

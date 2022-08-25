@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:02:19 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/23 15:52:03 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/25 15:49:47 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		verify_digits(char *n);
 int		verify_arg_rules(char **argv, t_stack *a);
 void	normalize(t_stack *a);
 int		is_sorted(t_list *list);
+long	almost_sorted(t_list *list);
 
 int		push(t_stack *from, t_stack *to);
 int		swap(t_stack *stack);
