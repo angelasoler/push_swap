@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/26 17:33:58 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:24:32 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,16 @@ t_list	*find_smaller_and_bigger(t_list *a, char type)
 	return (lst);
 }
 
-void	sort_3(t_stack *a, t_stack *b)
+void	sort_3(t_stack *a)
 {
-	t_list	*smaller;
 	t_list	*last;
 	long	bigger;
 
-	
 	if (a->size == 1)
 		return ;
 	bigger = a->size - 1;
 	last = ft_lstlast(a->lst);
-	smaller = find_smaller_and_bigger(a->lst, 's');
-	while (ft_lstsize(a->lst) > 3)
-	{
-		while (a->lst->content != smaller->content)
-			rotate(a);
-		push(a, b);
-		smaller = find_smaller_and_bigger(a->lst, 's');
-	}
-	if (last->content != bigger && ft_lstsize(a->lst) == 3)
+	if (last->content != bigger)
 	{
 		if (a->lst->content != bigger)
 			reverse_rotate(a);
@@ -60,8 +50,6 @@ void	sort_3(t_stack *a, t_stack *b)
 	}
 	if (a->lst->content > a->lst->next->content)
 		swap(a);
-	while (b->lst)
-		push(b, a);
 }
 
 long	find_n(t_list *list, long n)
@@ -82,13 +70,26 @@ long	find_n(t_list *list, long n)
 t_stack	sort(t_stack *a)
 {
 	t_stack	b;
+	t_list	*smaller;
 
 	b.lst = NULL;
 	b.type = 'b';
 	if (is_sorted(a->lst))
 		return (b);
-	if (a->size >= 5)
-		sort_3(a, &b);
+	if (a->size <= 5)
+	{
+		smaller = find_smaller_and_bigger(a->lst, 's');
+		while (ft_lstsize(a->lst) > 3)
+		{
+			while (a->lst->content != smaller->content)
+				rotate(a);
+			push(a, &b);
+			smaller = find_smaller_and_bigger(a->lst, 's');
+		}
+		sort_3(a);
+		while (b.lst)
+			push(&b, a);
+	}
 	// else
 	// 	sort_n(a, &b);
 	return (b);
@@ -114,21 +115,21 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	normalize(&a);
-	ft_printf("-- --before sort a:\n");
-	print_list(a.lst);
+	// ft_printf("-- --before sort a:\n");
+	// print_list(a.lst);
 	b = sort(&a);
-	ft_printf("---- sorted a:\n");
-	print_list(a.lst);
-	ft_printf(" --- a print reverse:\n");
-	print_list_in_reverse(a.lst);
-	if (b.lst)
-	{
-		ft_printf("   ---after sort ---\n\n");
-		ft_printf("b:\n");
-		print_list(b.lst);
-		// ft_printf("b print reverse:\n");
-		// print_list_in_reverse(b.lst);
-	}
+	// ft_printf("---- sorted a:\n");
+	// print_list(a.lst);
+	// ft_printf(" --- a print reverse:\n");
+	// print_list_in_reverse(a.lst);
+	// if (b.lst)
+	// {
+	// 	ft_printf("   ---after sort ---\n\n");
+	// 	ft_printf("b:\n");
+	// 	print_list(b.lst);
+	// 	// ft_printf("b print reverse:\n");
+	// 	// print_list_in_reverse(b.lst);
+	// }
 	free_list(a.lst);
 	free_list(b.lst);
 	return (argc);

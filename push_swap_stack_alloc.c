@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 16:55:39 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/25 05:58:19 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/27 14:24:07 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,19 @@ void	sort_array(long int *arr, long size)
 
 void	normalize(t_stack *a)
 {
-	t_list		*head;
-	long int	i;
+	t_list	*head;
+	long	i;
 
 	i = 1;
+	head = a->lst;
 	sort_array(&a->arr[1], a->size);
-	while (i <= a->size)
+	while (head)
 	{
-		head = a->lst;
 		while (head->content != a->arr[i])
-			head = head->next;
+			i++;
 		head->content = i - 1;
-		i++;
+		head = head->next;
+		i = 1;
 	}
 	free(a->arr);
 }

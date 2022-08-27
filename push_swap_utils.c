@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:11:47 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/25 16:12:12 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/27 13:53:08 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	free_list(t_list *list)
 
 int	is_sorted(t_list *list)
 {
-	
 	while (list->next)
 	{
 		if (list->content != (list->next->content - 1))
@@ -65,10 +64,11 @@ long	almost_sorted(t_list *list)
 	list = list->next;
 	while (list->next)
 	{
-		if (list->content != (list->next->content - 1) && list->content != (list->prev->content + 1))
+		if (list->content != (list->next->content - 1) && \
+		list->content != (list->prev->content + 1))
 		{
 			result = list->content;
-			break;
+			break ;
 		}
 		list = list->next;
 	}
