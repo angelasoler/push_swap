@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/27 16:48:56 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/27 20:30:05 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ int	main(int argc, char *argv[])
 	t_stack	a;
 	t_stack	b;
 
+	if (argc == 1)
+		exit (EXIT_FAILURE);
 	a.type = 'a';
 	a.size = argc - 1;
 	a.lst = NULL;
@@ -121,21 +123,7 @@ int	main(int argc, char *argv[])
 		exit (EXIT_FAILURE);
 	}
 	normalize(&a);
-	// ft_printf("-- --before sort a:\n");
-	// print_list(a.lst);
 	b = sort(&a);
-	// ft_printf("---- sorted a:\n");
-	// print_list(a.lst);
-	// ft_printf(" --- a print reverse:\n");
-	// print_list_in_reverse(a.lst);
-	// if (b.lst)
-	// {
-	// 	ft_printf("   ---after sort ---\n\n");
-	// 	ft_printf("b:\n");
-	// 	print_list(b.lst);
-	// 	// ft_printf("b print reverse:\n");
-	// 	// print_list_in_reverse(b.lst);
-	// }
 	free_list(a.lst);
 	exit (EXIT_SUCCESS);
 }
