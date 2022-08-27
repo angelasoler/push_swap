@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/27 16:26:34 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/27 16:48:56 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ int	main(int argc, char *argv[])
 	verify_arg_rules(argv, &a);
 	if (!a.lst)
 	{
-		ft_printf("Error\n");
-		return (-1);
+		write(2, "Error\n", 6);
+		exit (EXIT_FAILURE);
 	}
 	normalize(&a);
 	// ft_printf("-- --before sort a:\n");
@@ -137,6 +137,5 @@ int	main(int argc, char *argv[])
 	// 	// print_list_in_reverse(b.lst);
 	// }
 	free_list(a.lst);
-	free_list(b.lst);
-	return (argc);
+	exit (EXIT_SUCCESS);
 }
