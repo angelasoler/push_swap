@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/27 20:30:05 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/27 23:45:04 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ t_stack	sort(t_stack *a)
 int	main(int argc, char *argv[])
 {
 	t_stack	a;
-	t_stack	b;
 
 	if (argc == 1)
 		exit (EXIT_FAILURE);
@@ -112,7 +111,6 @@ int	main(int argc, char *argv[])
 	a.size = argc - 1;
 	a.lst = NULL;
 	a.rrr = 0;
-	b.rrr = 0;
 	a.dup = 0;
 	a.arr = calloc((a.size + 2), sizeof(long int));
 	a.arr[0] = 1;
@@ -123,7 +121,7 @@ int	main(int argc, char *argv[])
 		exit (EXIT_FAILURE);
 	}
 	normalize(&a);
-	b = sort(&a);
+	sort(&a);
 	free_list(a.lst);
 	exit (EXIT_SUCCESS);
 }
