@@ -6,13 +6,13 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/27 14:24:32 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/27 16:26:34 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*find_smaller_and_bigger(t_list *a, char type)
+t_list	*find_smaller(t_list *a)
 {
 	t_list	*lst;
 	int		index;
@@ -22,9 +22,7 @@ t_list	*find_smaller_and_bigger(t_list *a, char type)
 	index = 1;
 	while (a)
 	{
-		if (a->content > lst->content && type == 'b')
-			lst = a;
-		if (a->content < lst->content && type == 's')
+		if (a->content < lst->content)
 			lst = a;
 		index++;
 		a = a->next;
@@ -52,20 +50,28 @@ void	sort_3(t_stack *a)
 		swap(a);
 }
 
-long	find_n(t_list *list, long n)
+void	sort_n(t_stack *a, t_stack *b)
 {
-	while (list)
-	{
-		if (list->content == n)
-			return (n);
-		list = list->next;
-	}
-	return (-1);
-}
+	long	shift;
+	long	count;
 
-// void	sort_n(t_stack *a, t_stack *b)
-// {
-// }
+	shift = 0;
+	while (!is_sorted(a->lst))
+	{
+		count = 0;
+		while (count < a->size)
+		{
+			if ((a->lst->content >> shift) & 1)
+				rotate(a);
+			else
+				push(a, b);
+			count++;
+		}
+		while (b->lst)
+			push(b, a);
+		shift++;
+	}
+}
 
 t_stack	sort(t_stack *a)
 {
@@ -78,20 +84,20 @@ t_stack	sort(t_stack *a)
 		return (b);
 	if (a->size <= 5)
 	{
-		smaller = find_smaller_and_bigger(a->lst, 's');
+		smaller = find_smaller(a->lst);
 		while (ft_lstsize(a->lst) > 3)
 		{
 			while (a->lst->content != smaller->content)
 				rotate(a);
 			push(a, &b);
-			smaller = find_smaller_and_bigger(a->lst, 's');
+			smaller = find_smaller(a->lst);
 		}
 		sort_3(a);
 		while (b.lst)
 			push(&b, a);
 	}
-	// else
-	// 	sort_n(a, &b);
+	else
+		sort_n(a, &b);
 	return (b);
 }
 
