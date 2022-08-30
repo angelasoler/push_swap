@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:02:19 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/25 15:49:47 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/30 18:04:47 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_stack
 	char		type;
 	long int	size;
 	long int	*arr;
-	long int	rrr;
 	int			dup;
 }	t_stack;
 
@@ -44,7 +43,6 @@ long	almost_sorted(t_list *list);
 
 int		push(t_stack *from, t_stack *to);
 int		swap(t_stack *stack);
-int		operate_both(t_list **a, t_list **b, int f(t_list **));
 int		rotate(t_stack *stack);
 int		reverse_rotate(t_stack *stack);
 

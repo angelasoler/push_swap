@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/27 23:45:04 by asoler           ###   ########.fr       */
+/*   Updated: 2022/08/30 18:52:41 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ int	main(int argc, char *argv[])
 	a.type = 'a';
 	a.size = argc - 1;
 	a.lst = NULL;
-	a.rrr = 0;
 	a.dup = 0;
 	a.arr = calloc((a.size + 2), sizeof(long int));
 	a.arr[0] = 1;
