@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/27 23:45:04 by asoler           ###   ########.fr       */
+/*   Updated: 2022/09/02 00:16:03 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,7 @@ void	sort_3(t_stack *a)
 		swap(a);
 }
 
-void	sort_n(t_stack *a, t_stack *b)
-{
-	long	shift;
-	long	count;
-
-	shift = 0;
-	while (!is_sorted(a->lst))
-	{
-		count = 0;
-		while (count < a->size)
-		{
-			if ((a->lst->content >> shift) & 1)
+voidshift) & 1)
 				rotate(a);
 			else
 				push(a, b);
