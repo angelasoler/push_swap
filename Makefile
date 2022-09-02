@@ -13,6 +13,15 @@ SRC =	push_swap.c \
 
 OBJ = $(SRC:.c=.o)
 
+define GIT =
+	git add .
+	read -p "commit message:" commit_message
+	read -p "branch:" branch
+	echo $$branch
+	git commit -m "$$commit_message"
+	git push origin $$branch
+endef
+
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
@@ -27,12 +36,17 @@ $(LIBFT):
 re: fclean all
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 clean:
-	rm -rf *.o
+	@rm -rf *.o
 
 fclean_libft: fclean
-	make fclean -C libft
+	@make fclean -C libft
+
+commit: fclean_libft
+	$(GIT)
 
 .PONHY: re fclean clean all
+
+.ONESHELL:
