@@ -17,7 +17,6 @@ define GIT =
 	git add .
 	read -p "commit message:" commit_message
 	read -p "branch:" branch
-	echo $$branch
 	git commit -m "$$commit_message"
 	git push origin $$branch
 endef
@@ -45,7 +44,7 @@ fclean_libft: fclean
 	@make fclean -C libft
 
 commit: fclean_libft
-	$(GIT)
+	@$(GIT)
 
 .PONHY: re fclean clean all
 
