@@ -1,3 +1,17 @@
+ifneq (,$(findstring xterm,${TERM}))
+	GREEN        := $(shell tput -Txterm setaf 2)
+	YELLOW       := $(shell tput -Txterm setaf 3)
+	RESET := $(shell tput -Txterm sgr0)
+endif
+
+define GIT =
+	git add .
+	read -p "${YELLOW}Commit Message:${RESET}" commit_message
+	read -p "${YELLOW}Branch:${RESET}" branch
+	git commit -m "$$commit_message"
+	git push origin $$branch
+endef
+
 NAME = push_swap
 
 CC = cc
@@ -12,14 +26,6 @@ SRC =	push_swap.c \
 		push_swap_stack_alloc.c
 
 OBJ = $(SRC:.c=.o)
-
-define GIT =
-	git add .
-	read -p "commit message:" commit_message
-	read -p "branch:" branch
-	git commit -m "$$commit_message"
-	git push origin $$branch
-endef
 
 all: $(NAME)
 

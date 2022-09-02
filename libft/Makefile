@@ -34,7 +34,7 @@ $(NAME): $(OBJ)
 re: fclean all
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 clean:
-	rm -rf *.o
+	@rm -rf *.o
