@@ -13,6 +13,7 @@ define GIT =
 	git add .
 	git status
 	read -p "${YELLOW}Commit Message:${RESET}" commit_message
+	echo $$commit_message
 	read -p "${YELLOW}Branch:${RESET}" branch
 	git commit -m "$$commit_message"
 	git push origin $$branch
