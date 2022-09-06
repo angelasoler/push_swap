@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:02:19 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/30 18:04:47 by asoler           ###   ########.fr       */
+/*   Updated: 2022/09/06 17:54:50 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		verify_arg_rules(char **argv, t_stack *a);
 void	normalize(t_stack *a);
 int		is_sorted(t_list *list);
 long	almost_sorted(t_list *list);
+void	push_smallers(t_stack *a, t_stack *b);
+t_list	*find_smaller(t_list *a);
 
 int		push(t_stack *from, t_stack *to);
 int		swap(t_stack *stack);

@@ -6,31 +6,42 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:11:47 by asoler            #+#    #+#             */
-/*   Updated: 2022/08/27 13:53:08 by asoler           ###   ########.fr       */
+/*   Updated: 2022/09/06 17:55:28 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(t_list *list)
+t_list	*find_smaller(t_list *a)
 {
-	while (list)
+	t_list	*lst;
+
+	lst = a;
+	a = a->next;
+	lst->index = 0;
+	while (a)
 	{
-		ft_printf("%d\n", list->content);
-		list = list->next;
+		if (a->content < lst->content)
+			lst = a;
+		lst->index++;
+		a = a->next;
 	}
+	return (lst);
 }
 
-void	print_list_in_reverse(t_list *list)
+void	push_smallers(t_stack *a, t_stack *b)
 {
-	t_list	*tail;
+	t_list	*smaller;
 
-	tail = ft_lstlast(list);
-	while (tail)
+	smaller = find_smaller(a->lst);
+	while (a->lst->content != smaller->content)
 	{
-		ft_printf("%d\n", tail->content);
-		tail = tail->prev;
+		if (smaller->index < 2)
+			reverse_rotate(a);
+		else
+			rotate(a);
 	}
+	push(a, b);
 }
 
 void	free_list(t_list *list)

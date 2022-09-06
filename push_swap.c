@@ -6,29 +6,11 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:59:24 by asoler            #+#    #+#             */
-/*   Updated: 2022/09/03 14:59:06 by asoler           ###   ########.fr       */
+/*   Updated: 2022/09/06 17:54:06 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_list	*find_smaller(t_list *a)
-{
-	t_list	*lst;
-	int		index;
-
-	lst = a;
-	a = a->next;
-	index = 1;
-	while (a)
-	{
-		if (a->content < lst->content)
-			lst = a;
-		index++;
-		a = a->next;
-	}
-	return (lst);
-}
 
 void	sort_3(t_stack *a)
 {
@@ -76,7 +58,6 @@ void	sort_n(t_stack *a, t_stack *b)
 t_stack	sort(t_stack *a)
 {
 	t_stack	b;
-	t_list	*smaller;
 
 	b.lst = NULL;
 	b.type = 'b';
@@ -84,14 +65,8 @@ t_stack	sort(t_stack *a)
 		return (b);
 	if (a->size <= 5)
 	{
-		smaller = find_smaller(a->lst);
 		while (ft_lstsize(a->lst) > 3)
-		{
-			while (a->lst->content != smaller->content)
-				rotate(a);
-			push(a, &b);
-			smaller = find_smaller(a->lst);
-		}
+			push_smallers(a, &b);
 		sort_3(a);
 		while (b.lst)
 			push(&b, a);
