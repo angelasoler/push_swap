@@ -20,17 +20,21 @@ define GIT =
 endef
 
 define TESTS =
-	echo "ordering 3 args with "
+	echo "${LIGHTPURPLE}   ----- Sorting 3 args ----- ${RESET}"
 	./push_swap ${ARGS_3} | wc -l
+	echo "${LIGHTPURPLE}   ----- checker_linux ----- ${RESET}"
 	./push_swap ${ARGS_3} | ./checker_linux ${ARGS_3}
-	echo "ordering 5 args with "
+	echo "${LIGHTPURPLE}   ----- Sorting 5 args ----- ${RESET}"
 	./push_swap ${ARGS_5} | wc -l
+	echo "${LIGHTPURPLE}   ----- checker_linux ----- ${RESET}"
 	./push_swap ${ARGS_5} | ./checker_linux ${ARGS_5}
-	echo "ordering 100 args with "
+	echo "${LIGHTPURPLE}   ----- Sorting 100 args ----- ${RESET}"
 	./push_swap ${ARGS_100} | wc -l
+	echo "${LIGHTPURPLE}   ----- checker_linux ----- ${RESET}"
 	./push_swap ${ARGS_100} | ./checker_linux ${ARGS_100}
-	echo "ordering 500 args with "
+	echo "${LIGHTPURPLE}   ----- Sorting 500 args ----- ${RESET}"
 	./push_swap ${ARGS_500} | wc -l
+	echo "${LIGHTPURPLE}   ----- checker_linux ----- ${RESET}"
 	./push_swap ${ARGS_500} | ./checker_linux ${ARGS_500}
 endef
 
