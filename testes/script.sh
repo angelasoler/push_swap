@@ -34,7 +34,7 @@ filename='three_elements'
 OK=1
 while read line; do
 	NUMBER=`../push_swap $line | wc -l`
-	if [ $NUMBER -ge 13 ]; then
+	if [ $NUMBER -ge 3 ]; then
 		OK=0;
 		echo -e "${BLUE}------- 3 ELEMENTS ALL POSSIBLE COMBINATIONS ----------${SET}"
 		echo -e "${LIGHTPURPLE}ARGS: ${SET}${CYAN}$line${SET}"
