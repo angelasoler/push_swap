@@ -25,21 +25,13 @@ typedef struct s_stack
 	int			dup;
 }	t_stack;
 
-typedef struct s_data
-{
-	t_list	*head;
-	t_list	*tail;
-}	t_data;
-
-void	print_list_in_reverse(t_list *list);
-void	print_list(t_list *list);
+void	init_struct(t_stack *stack, int argc);
 void	free_list(t_list *list);
 void	alloc_to_list(char *s, t_list **list);
 int		verify_digits(char *n);
 int		verify_arg_rules(char **argv, t_stack *a);
 void	normalize(t_stack *a);
 int		is_sorted(t_list *list);
-long	almost_sorted(t_list *list);
 void	push_smallers(t_stack *a, t_stack *b);
 t_list	*find_smaller(t_list *a);
 

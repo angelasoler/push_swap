@@ -82,12 +82,7 @@ int	main(int argc, char *argv[])
 
 	if (argc == 1)
 		exit (EXIT_FAILURE);
-	a.type = 'a';
-	a.size = argc - 1;
-	a.lst = NULL;
-	a.dup = 0;
-	a.arr = calloc((a.size + 2), sizeof(long int));
-	a.arr[0] = 1;
+	init_struct(&a, argc);
 	verify_arg_rules(argv, &a);
 	if (!a.lst)
 	{

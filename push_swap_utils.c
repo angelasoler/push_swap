@@ -66,3 +66,13 @@ int	is_sorted(t_list *list)
 	}
 	return (1);
 }
+
+void	init_struct(t_stack *stack, int argc)
+{
+	stack->type = 'a';
+	stack->size = argc - 1;
+	stack->lst = NULL;
+	stack->dup = 0;
+	stack->arr = calloc((stack->size + 2), sizeof(long int));
+	stack->arr[0] = 1;
+}
