@@ -105,7 +105,8 @@ int	verify_arg_rules(char **argv, t_stack *a)
 			free_list(a->lst);
 			free(a->arr);
 			a->lst = NULL;
-			return (1);
+			write(2, "Error\n", 6);
+			exit (EXIT_FAILURE);
 		}
 		i++;
 	}

@@ -84,11 +84,6 @@ int	main(int argc, char *argv[])
 		exit (EXIT_FAILURE);
 	init_struct(&a, argc);
 	verify_arg_rules(argv, &a);
-	if (!a.lst)
-	{
-		write(2, "Error\n", 6);
-		exit (EXIT_FAILURE);
-	}
 	normalize(&a);
 	sort(&a);
 	free_list(a.lst);
