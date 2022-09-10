@@ -16,7 +16,9 @@
 
 💠 Sorting algorithms
 
-💠 Time and spaces complexity with big o notation
+💠 Time and space complexity with big o notation
+  
+💠 Algorithm optimization
 
 </p>
 
