@@ -14,13 +14,10 @@
 <p>
 💠 Time complexity algorithm analysis
 
-💠 Use of read function
+💠 Sorting algorithms
 
-💠 Memory allocation and manipulation
+💠 Time and spaces complexity with big o notation
 
-💠 Multidimentional vector
-
-💠 Debugging with gdb and valgrind
 </p>
 
 <h2 align="center">~~~~~~~  tests   ~~~~~~~  </h2>
