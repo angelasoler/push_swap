@@ -24,10 +24,10 @@
 
 <h2 align="center">~~~~~~~  tests   ~~~~~~~  </h2>
 
-- You can find some test with ramdom lists into make file, just download de checker from intra and run
+- Find some test with ramdom lists into make file, just download de checker from intra and run
     
     `make test`
-- Also you can run the shell script from the directory `testes` to test all arguments combinations with 3 and 5 elements.
+- Run the shell script from the directory `testes` to test all arguments combinations with 3 and 5 elements as well.
     
     `cd testes`
     
